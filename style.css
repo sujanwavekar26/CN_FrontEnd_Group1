@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Righteous', cursive;
+}
+body {
+  background-color: rgb(125, 31, 162);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.heading {
+  font-size: 2em;
+  margin: 2em 0;
+}
+.stopwatch {
+  background-color: #1c8772;
+  border-radius: 10px;
+  padding: 20px 0;
+}
+.stopwatch span {
+  font-size: 2.5em;
+}
+.buttons {
+  margin-top: 2em;
+}
+
+.buttons :hover{background-color: rgb(78, 1, 75);}
+
+.buttons button {
+  background-color: inherit;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 10px 45px;
+  outline: none;
+  cursor: pointer;
+}
+.startBtn {
+  width: 400px;
+}
+.lapBtn,
+.stopBtn {
+  display: none;
+  width: 200px;
+}
+.laps {
+  text-align: left;
+  margin-top: 2em;
+}
+.laps p {
+  font-size: 1.3em;
+  margin-bottom: 0.7em;
+}
