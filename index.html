@@ -1,4 +1,4 @@
-<!-- The basic structure of Web Page -->
+    <!-- The basic structure of Web Page -->
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -18,8 +18,8 @@
             </div>
             <!-- Created Stopwatch class with necessary parameters -->
             <div class="stopwatch">
-              <span class="seconds">00 : </span>
-              <span class="milliseconds">00</span>
+              <span class="minutes">00 : </span>
+              <span class="seconds">00</span>
             </div>
             <!-- Buttons structure -->
             <div class="buttons">
@@ -35,16 +35,17 @@
     <!-- From here the JavaScript part begins -->
          
     <script>
+      
+            const minutesSpan = document.querySelector(".minutes");
             const secondsSpan = document.querySelector(".seconds");
-            const millisecondsSpan = document.querySelector(".milliseconds");
             const startBtn = document.querySelector(".startBtn");
             const lapBtn = document.querySelector(".lapBtn");
             const stopBtn = document.querySelector(".stopBtn");
             const laps = document.querySelector(".laps");
 
    
-          let seconds = 0,
-          milliseconds = 0;
+          let minutes = 0,
+              seconds = 0;
           var stopwatch;
 
             startBtn.addEventListener("click", () => {
@@ -53,23 +54,24 @@
             stopBtn.style.display = "inline-block";
 
               stopwatch = setInterval(() => {
-              milliseconds++;
-              
-              if (milliseconds == 100) {
               seconds++;
-              milliseconds = 0;
+              
+              if (seconds == 60) {
+              minutes++;
+              seconds = 0;
               }
         
-              if (seconds<= 9) secondsSpan.innerText = "0" + seconds + " : ";
-              else secondsSpan.innerText = seconds + " : ";
-              if (milliseconds>=10 && milliseconds <= 100) millisecondsSpan.innerText = milliseconds;
-              else millisecondsSpan.innerText =  "0" + milliseconds;
+              if (minutes<= 9)  minutesSpan.innerText = "0" + minutes + " : ";
+              else minutesSpan.innerText = minutes + " : ";
+              if (seconds>=10 && seconds <= 60) secondsSpan.innerText = seconds;
+              else secondsSpan.innerText =  "0" + seconds;
               }, 1000);
+              
             });
 
             lapBtn.addEventListener("click", () => {
             const lap = document.createElement("div");
-            lap.innerText = seconds + " : " + milliseconds;
+            lap.innerText = minutes + " : " + seconds;
             laps.appendChild(lap);
           });
 
@@ -81,12 +83,12 @@
       clearInterval(stopwatch);
 
       
-      secondsSpan.innerText = "00 : ";
-      millisecondsSpan.innerText = "00";
+      minutesSpan.innerText = "00 : ";
+      secondsSpan.innerText = "00";
 
      
+      minutes = 0;
       seconds = 0;
-      milliseconds = 0;
 
       laps.innerHTML = "<p>LAP Record </p>";
     });
